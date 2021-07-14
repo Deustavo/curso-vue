@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+  <p>{{ contador }}</p>
+	<button v-on:click="somar(1, $event)">Somar 1</button>
+	<p v-on:mousemove="atualizarXY">
+		Mouse: {{ x }} e {{ y }}
+		<!-- stop é um modificador de evento, aqui usado para paraa a propagação do evento atualizarXY (.stopPropagation)-->
+		<span v-on:mousemove.stop="">PARAR AQUI!</span>
+	</p>
+	<!-- prevent é um modificador de evento que previne um evento padrão (.preventDefault)-->
+	<a v-on:click.prevent="" href="https://google.com">Google</a>
+
+	<!-- v-on:keyup dispara um evento sempre que uma tecla qualquer é clicada -->
+	<!-- v-on:keyup.enter dispara um evento sempre que a tecla enter é clicada -->
+	<!-- v-on:keyup.enter.alt dispara um evento sempre que a tecla enter é clicada junto a tecla alt -->
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			contador: 1,
+			x: 0,
+			y: 0
+		},
+		methods: {
+			somar(valor, e) {
+				console.log(e);
+				this.contador += valor;
+			},
+			atualizarXY(e) {
+				this.x = e.clientX,
+				this.y = e.clientY
+			}
+		}
+	})
+</script>
