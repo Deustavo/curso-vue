@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+	<input
+		type="text"
+		v-on:input="alterarTitulo"
+	>
+	<p>{{ titulo }}</p>
+</div>
+
+<script>
+	new Vue({
+		// EL escolhe qual elemento será controlado com o vue
+		el: "#app",
+
+		// Dados que serão usados pelo vue
+		data: {
+				titulo: "hello wold"
+		},
+
+		// Metodos que serão executados com eventos
+		methods: {
+				alterarTitulo(e) {
+						this.titulo = e.target.value
+				}
+		}
+	})
+</script>

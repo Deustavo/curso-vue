@@ -1,0 +1,29 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+	<p>{{ titulo }}</p>
+	<!-- ** -->
+	<p>{{ saudacao() }}</p>
+	<!-- A diretiva "v-bind" serve para fazer uma ligação entre algo da vue instance e seus atributos dentro das tags html -->
+	<!-- Diretivas são propriedades personalizadas. o Vue tem diretivas próprias interpretadas por ele com JS -->
+	<a v-bind:href="link">Goole</a>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			titulo: "Usando Vue js!",
+			link: "http://google.com.br"
+		},
+		methods: {
+			// ** Para acessar o retorno desse metodo, é necessário chama-lo com parenteses dentro do html
+			// Tudo que é retornado precisa ser tranformado em string dentro do html
+			saudacao: function() {
+				// This, nesse contexto, representa toda a instancia do Vue
+				console.log(this)
+				return 'Boa semana!'
+			}
+		}
+	})
+</script>

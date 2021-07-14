@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+	<!-- A diretiva v-once faz com que a variavel seja lida apenas na primeira vez em que o programa e executado e não tenha seu valor alterado -->
+	<p v-once>{{ titulo }}</p>
+	<p>{{ saudacao() }}</p>
+	<a v-bind:href="link">Goole</a>
+	<!-- A diretiva v-html transforma uma string em html -->
+	<p v-html="linkHtml"></p>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			titulo: "Usando Vue js!",
+			link: "http://google.com.br",
+			linkHtml: "<a href='http://youtube.com'>Youtube</a>"
+		},
+		methods: {
+			saudacao: function() {
+				// Quando se altera o valor de uma variavel do vue, a variavel é alterada em QUASE todos os lugares em que é usada
+				this.titulo = "Bom dia!"
+				return this.titulo
+			}
+		}
+	})
+</script>
