@@ -1,0 +1,31 @@
+<!-- 
+	NOTAS:
+
+	Atribui a variavel titulo ao input
+	v-bind:value="titulo"
+
+	Muda o malor da variavel titulo de acordo com o que é digitado
+	v-on:input="titulo = $event.target.value"
+
+	Atribui valor e altera de acordo com o que é digitado
+	v-model="titulo"
+-->
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+<div id="app">
+	<p>{{ titulo }}</p>
+	<input
+		type="text"
+		v-model="titulo"
+	>
+</div>
+
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			titulo: "hello wold"
+		}
+	})
+</script>
