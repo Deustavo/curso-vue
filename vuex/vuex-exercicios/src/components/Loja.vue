@@ -11,16 +11,24 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
     data() {
         return {
             sequencia: 1,
-            quantidade: 1,
-            preco: 9.99,
+        }
+    },
+    computed: {
+        quantidade() {
+            return this.$store.state.parametros.quantidade
+        },
+        preco() {
+            return this.$store.state.parametros.preco
         }
     },
     methods: {
+        ...mapActions('carrinho', ['adicionarProduto']),
         adicionar() {
             const produto = {
                 id: this.sequencia,
@@ -29,8 +37,13 @@ export default {
                 preco: this.preco
             }
             this.sequencia++
-            // eslint-disable-next-line
-            console.log(produto)
+
+            // commit serve para chamar uma mutation da store
+            // this.$store.commit('adicionarProduto', produto)
+
+            // dispatch serve para chamar uma action da store
+            // this.$store.dispatch('adicionarProduto', produto)
+            this.adicionarProduto(produto)
         }
     }
 }
